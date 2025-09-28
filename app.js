@@ -181,7 +181,7 @@ ipcMain.handle('launch-minecraft', async (event, options) => {
 
     const launcher = new Client();
     
-    const launchOptions = {
+    let launchOptions = {
       authorization: options.auth,
       root: options.gameDirectory || path.join(__dirname, 'minecraft'),
       version: {
@@ -193,6 +193,27 @@ ipcMain.handle('launch-minecraft', async (event, options) => {
         min: "2G"
       }
     };
+    
+    // Add advanced options if provided
+    if (options.javaPath) {
+      launchOptions.javaPath = options.javaPath;
+    }
+    
+    if (options.jvmArgs) {
+      launchOptions.customArgs = options.jvmArgs.split(' ').filter(arg => arg.trim());
+    }
+    
+    if (options.windowWidth && options.windowHeight) {
+      launchOptions.window = {
+        width: parseInt(options.windowWidth),
+        height: parseInt(options.windowHeight),
+        fullscreen: options.fullscreen || false
+      };
+    }
+    
+    if (options.demoMode) {
+      launchOptions.demo = true;
+    }
 
     launcher.launch(launchOptions);
     
@@ -200,6 +221,12 @@ ipcMain.handle('launch-minecraft', async (event, options) => {
     launcher.on('data', (e) => logger.info(`[Minecraft] ${e.toString()}`));
     launcher.on('close', (code) => {
       logger.info(`Minecraft closed with code ${code}`);
+      
+      // Close launcher if option is not set
+      if (!options.keepLauncherOpen) {
+        // Optional: minimize to tray or close completely
+      }
+      
       // Reset Discord RPC
       rpcClient.setActivity({
         details: "Rolve Minecraft Client",
@@ -297,6 +324,45 @@ ipcMain.handle('get-minecraft-versions', async () => {
     };
   } catch (error) {
     logger.error('Failed to fetch Minecraft versions:', error);
+    return { success: false, message: error.message };
+  }
+});
+
+// Browse directory
+ipcMain.handle('browse-directory', async () => {
+  try {
+    const result = await dialog.showOpenDialog(mainWindow, {
+      properties: ['openDirectory'],
+      title: 'Select Game Directory'
+    });
+    
+    if (!result.canceled && result.filePaths.length > 0) {
+      return { success: true, path: result.filePaths[0] };
+    }
+    
+    return { success: false };
+  } catch (error) {
+    logger.error('Failed to browse directory:', error);
+    return { success: false, message: error.message };
+  }
+});
+
+// Browse file
+ipcMain.handle('browse-file', async (event, options) => {
+  try {
+    const result = await dialog.showOpenDialog(mainWindow, {
+      properties: ['openFile'],
+      title: options.title || 'Select File',
+      filters: options.filters || [{ name: 'All Files', extensions: ['*'] }]
+    });
+    
+    if (!result.canceled && result.filePaths.length > 0) {
+      return { success: true, path: result.filePaths[0] };
+    }
+    
+    return { success: false };
+  } catch (error) {
+    logger.error('Failed to browse file:', error);
     return { success: false, message: error.message };
   }
 });
