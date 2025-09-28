@@ -1,0 +1,88 @@
+{
+  "name": "rolve",
+  "version": "1.0.2",
+  "description": "Brain Empty Just Floof~",
+  "main": "app.js",
+  "scripts": {
+    "start": "concurrently \"npm run network\" \"npm run client\"",
+    "client": "electron .",
+    "build-icons": "electron-icon-builder -i assets/icon.png -o assets/application-images",
+    "build": "npm run build-icons && electron-builder --mac --x64",
+    "mac": "electron-builder --mac",
+    "win": "electron-builder --win"
+  },
+  "keywords": [],
+  "author": "KiwiTheKofi & Airy",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.7.7",
+    "body-parser": "^1.20.3",
+    "cors": "^2.8.5",
+    "discord-rpc": "^4.0.1",
+    "dotenv": "^16.4.5",
+    "electron-icon-builder": "^2.0.1",
+    "express": "^4.21.1",
+    "monaco-editor": "^0.17.1",
+    "monaco-loader": "^1.0.0",
+    "nodemon": "^3.1.7"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.0",
+    "electron": "^26.6.10",
+    "electron-builder": "^25.1.8",
+    "electron-icon-builder": "^2.0.1"
+  },
+  "build": {
+    "appId": "com.yourcompany.Rolve",
+    "productName": "Rolve",
+    "files": [
+    
+      "app.js",
+      "preload.js",
+      "assets/**/*",
+      "public/**/*",
+      "node_modules/**/*",
+      "package.json"
+    ],
+    "mac": {
+      "category": "public.app-category.developer-tools",
+      "icon": "assets/application-images/icons/mac/icon.icns",
+      "target": [
+        {
+          "target": "dmg",
+          "arch": [
+            "x64"
+          ]
+        },
+        {
+          "target": "zip",
+          "arch": [
+            "x64"
+          ]
+        }
+      ]
+    },
+    "win": {
+      "icon": "assets/application-images/icons/win/icon.ico",
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64",
+            "ia32"
+          ]
+        }
+      ]
+    },
+    "linux": {
+      "icon": "assets/application-images/icons/png/512x512.png",
+      "target": [
+        "AppImage",
+        "deb"
+      ]
+    },
+    "directories": {
+      "output": "dist"
+    }
+  }
+}
