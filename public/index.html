@@ -73,6 +73,11 @@
                         <div class="username">Not logged in</div>
                         <div class="user-status">Offline</div>
                     </div>
+                    <button class="logout-btn" id="logout-btn" style="display: none;">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M17 7l-1.41 1.41L18.17 11H8v2h10.17l-2.58 2.59L17 17l5-5zM4 5h8V3H4c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h8v-2H4V5z"/>
+                        </svg>
+                    </button>
                 </div>
             </div>
         </div>
@@ -134,9 +139,18 @@
                     <div class="launch-form">
                         <div class="form-group">
                             <label for="version-select">Minecraft Version</label>
-                            <select id="version-select">
-                                <option value="1.20.1">1.20.1 (Latest)</option>
-                            </select>
+                            <div class="version-selector">
+                                <select id="version-select">
+                                    <option value="">Loading versions...</option>
+                                </select>
+                                <div class="version-filters">
+                                    <button class="filter-btn active" data-filter="all">All</button>
+                                    <button class="filter-btn" data-filter="release">Release</button>
+                                    <button class="filter-btn" data-filter="snapshot">Snapshot</button>
+                                    <button class="filter-btn" data-filter="old_beta">Beta</button>
+                                    <button class="filter-btn" data-filter="old_alpha">Alpha</button>
+                                </div>
+                            </div>
                         </div>
                         
                         <div class="form-group">
@@ -146,12 +160,65 @@
                                 <option value="4G" selected>4GB</option>
                                 <option value="6G">6GB</option>
                                 <option value="8G">8GB</option>
+                                <option value="12G">12GB</option>
+                                <option value="16G">16GB</option>
                             </select>
                         </div>
                         
                         <div class="form-group">
                             <label for="game-dir">Game Directory</label>
-                            <input type="text" id="game-dir" placeholder="Default directory will be used">
+                            <div class="input-group">
+                                <input type="text" id="game-dir" placeholder="Default directory will be used">
+                                <button type="button" class="browse-btn" id="browse-dir">Browse</button>
+                            </div>
+                        </div>
+                        
+                        <div class="advanced-toggle">
+                            <button type="button" class="toggle-btn" id="advanced-toggle">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M7 10l5 5 5-5z"/>
+                                </svg>
+                                Advanced Settings
+                            </button>
+                        </div>
+                        
+                        <div class="advanced-settings" id="advanced-settings">
+                            <div class="form-group">
+                                <label for="java-path">Java Path (Optional)</label>
+                                <div class="input-group">
+                                    <input type="text" id="java-path" placeholder="Auto-detect Java">
+                                    <button type="button" class="browse-btn" id="browse-java">Browse</button>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="jvm-args">JVM Arguments</label>
+                                <textarea id="jvm-args" placeholder="-XX:+UnlockExperimentalVMOptions -XX:+UseG1GC"></textarea>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="window-size">Window Size</label>
+                                <div class="window-size-group">
+                                    <input type="number" id="window-width" placeholder="854" min="400">
+                                    <span>×</span>
+                                    <input type="number" id="window-height" placeholder="480" min="300">
+                                </div>
+                            </div>
+                            
+                            <div class="checkbox-group">
+                                <label>
+                                    <input type="checkbox" id="fullscreen">
+                                    Launch in Fullscreen
+                                </label>
+                                <label>
+                                    <input type="checkbox" id="demo-mode">
+                                    Demo Mode
+                                </label>
+                                <label>
+                                    <input type="checkbox" id="keep-launcher-open">
+                                    Keep Launcher Open
+                                </label>
+                            </div>
                         </div>
                         
                         <button class="launch-btn" id="launch-btn" disabled>

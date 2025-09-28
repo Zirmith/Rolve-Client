@@ -7,6 +7,31 @@ const winston = require("winston");
 const fs = require("fs");
 const axios = require("axios");
 
+// User data storage
+const userDataPath = path.join(__dirname, 'userData.json');
+
+// Load user data
+function loadUserData() {
+  try {
+    if (fs.existsSync(userDataPath)) {
+      return JSON.parse(fs.readFileSync(userDataPath, 'utf8'));
+    }
+  } catch (error) {
+    logger.error('Failed to load user data:', error);
+  }
+  return {};
+}
+
+// Save user data
+function saveUserData(data) {
+  try {
+    fs.writeFileSync(userDataPath, JSON.stringify(data, null, 2));
+    logger.info('User data saved successfully');
+  } catch (error) {
+    logger.error('Failed to save user data:', error);
+  }
+}
+
 const clientId = "1270436944387641416";
 
 // Setup logging
@@ -201,6 +226,15 @@ ipcMain.handle('authenticate-microsoft', async () => {
     const xboxManager = await authManager.launch("raw");
     const token = await xboxManager.getMinecraft();
     
+    // Save user data
+    const userData = {
+      auth: token,
+      username: token.mclc().name,
+      uuid: token.mclc().uuid,
+      lastLogin: Date.now()
+    };
+    saveUserData(userData);
+    
     logger.info('Microsoft authentication successful');
     return { 
       success: true, 
@@ -214,13 +248,52 @@ ipcMain.handle('authenticate-microsoft', async () => {
   }
 });
 
+// Load saved user data
+ipcMain.handle('load-user-data', async () => {
+  try {
+    const userData = loadUserData();
+    if (userData.auth && userData.lastLogin) {
+      // Check if token is still valid (within 24 hours)
+      const tokenAge = Date.now() - userData.lastLogin;
+      if (tokenAge < 24 * 60 * 60 * 1000) {
+        logger.info('Loaded saved user authentication');
+        return {
+          success: true,
+          auth: userData.auth,
+          username: userData.username,
+          uuid: userData.uuid
+        };
+      }
+    }
+    return { success: false, message: 'No valid saved authentication' };
+  } catch (error) {
+    logger.error('Failed to load user data:', error);
+    return { success: false, message: error.message };
+  }
+});
+
+// Clear saved user data
+ipcMain.handle('logout-user', async () => {
+  try {
+    if (fs.existsSync(userDataPath)) {
+      fs.unlinkSync(userDataPath);
+    }
+    logger.info('User logged out successfully');
+    return { success: true };
+  } catch (error) {
+    logger.error('Failed to logout user:', error);
+    return { success: false, message: error.message };
+  }
+});
+
 // Check Minecraft versions
 ipcMain.handle('get-minecraft-versions', async () => {
   try {
     const response = await axios.get('https://launchermeta.mojang.com/mc/game/version_manifest.json');
     return {
       success: true,
-      versions: response.data.versions.slice(0, 20) // Get latest 20 versions
+      versions: response.data.versions,
+      latest: response.data.latest
     };
   } catch (error) {
     logger.error('Failed to fetch Minecraft versions:', error);
