@@ -15,21 +15,24 @@
   "author": "KiwiTheKofi & Airy",
   "license": "ISC",
   "dependencies": {
-    "axios": "^1.7.7",
+    "axios": "^1.7.2",
     "body-parser": "^1.20.3",
     "cors": "^2.8.5",
     "discord-rpc": "^4.0.1",
     "dotenv": "^16.4.5",
     "electron-icon-builder": "^2.0.1",
     "express": "^4.21.1",
+    "minecraft-launcher-core": "^3.18.1",
     "monaco-editor": "^0.17.1",
     "monaco-loader": "^1.0.0",
-    "nodemon": "^3.1.7"
+    "msmc": "^4.1.0",
+    "nodemon": "^3.1.7",
+    "winston": "^3.13.0"
   },
   "devDependencies": {
     "concurrently": "^9.1.0",
     "electron": "^26.6.10",
-    "electron-builder": "^25.1.8",
+    "electron-builder": "^24.6.4",
     "electron-icon-builder": "^2.0.1"
   },
   "build": {

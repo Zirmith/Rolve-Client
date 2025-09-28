@@ -1,521 +1,218 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="css/index.css" data-precedence="next" />
-
-    <meta name="theme-color" content="#FEFEFE" />
-    <title>Minecraft Client Launcher - Rolve.net</title>
-    <meta
-      name="description"
-      content="Find trending Roblox Scripts with our modern website."
-    />
-    <meta name="author" content="xyba" />
-    <meta
-      name="keywords"
-      content="roblox scripts, find roblox scripts, best roblox scripts, synapsex, roblox script lua, roblox script finder"
-    />
-    <link rel="canonical" href="https://Rolve.net/trending" />
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta
-      name="apple-mobile-web-app-status-bar-style"
-      content="black-translucent"
-    />
-    <meta
-      property="og:title"
-      content="Trending Roblox Scripts - Rolve.net"
-    />
-    <meta
-      property="og:description"
-      content="Find trending Roblox Scripts with our modern website."
-    />
-    <meta property="og:url" content="https://Rolve.net/trending" />
-    <meta property="og:image" content="images/5xVe6mIQD1Kl.webp" />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:site" content="https://Rolve.net/" />
-    <meta name="twitter:creator" content="@xyba1337" />
-    <meta
-      name="twitter:title"
-      content="Trending Roblox Scripts - Rolve.net"
-    />
-    <meta
-      name="twitter:description"
-      content="Find trending Roblox Scripts with our modern website."
-    />
-    <meta
-      name="twitter:image"
-      content="https://Rolve.net/assets/scripts/Rolve-Trending-Thumbnail.webp"
-    />
-    <link
-      rel="icon"
-      href="H0C2be7AZsrl.ico"
-      type="image/x-icon"
-      sizes="16x16"
-    />
-    <meta name="next-size-adjust" />
-   
-  </head>
-  <body class="theme-neutral bg-background __className_36bd41 min-h-screen">
-    <script>
-      !(function () {
-        try {
-          var d = document.documentElement,
-            c = d.classList;
-          c.remove("light", "dark");
-          var e = localStorage.getItem("theme");
-          if ("system" === e || (!e && false)) {
-            var t = "(prefers-color-scheme: dark)",
-              m = window.matchMedia(t);
-            if (m.media !== t || m.matches) {
-              d.style.colorScheme = "dark";
-              c.add("dark");
-            } else {
-              d.style.colorScheme = "light";
-              c.add("light");
-            }
-          } else if (e) {
-            c.add(e || "");
-          } else {
-            c.add("dark");
-          }
-          if (e === "light" || e === "dark" || !e)
-            d.style.colorScheme = e || "dark";
-        } catch (e) {}
-      })();
-    </script>
-    <style>
-      #nprogress {
-        pointer-events: none;
-      }
-      #nprogress .bar {
-        background: #fefefe;
-        position: fixed;
-        z-index: 1600;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 3px;
-      }
-      #nprogress .peg {
-        display: block;
-        position: absolute;
-        right: 0;
-        width: 100px;
-        height: 100%;
-        box-shadow: 0 0 10px #fefefe, 0 0 5px #fefefe;
-        opacity: 1;
-        -webkit-transform: rotate(3deg) translate(0px, -4px);
-        -ms-transform: rotate(3deg) translate(0px, -4px);
-        transform: rotate(3deg) translate(0px, -4px);
-      }
-      #nprogress .spinner {
-        display: block;
-        position: fixed;
-        z-index: 1600;
-        top: 15px;
-        right: 15px;
-      }
-      #nprogress .spinner-icon {
-        width: 18px;
-        height: 18px;
-        box-sizing: border-box;
-        border: 2px solid transparent;
-        border-top-color: #fefefe;
-        border-left-color: #fefefe;
-        border-radius: 50%;
-        -webkit-animation: nprogress-spinner 400ms linear infinite;
-        animation: nprogress-spinner 400ms linear infinite;
-      }
-      .nprogress-custom-parent {
-        overflow: hidden;
-        position: relative;
-      }
-      .nprogress-custom-parent #nprogress .bar,
-      .nprogress-custom-parent #nprogress .spinner {
-        position: absolute;
-      }
-      @-webkit-keyframes nprogress-spinner {
-        0% {
-          -webkit-transform: rotate(0deg);
-        }
-        100% {
-          -webkit-transform: rotate(360deg);
-        }
-      }
-      @keyframes nprogress-spinner {
-        0% {
-          transform: rotate(0deg);
-        }
-        100% {
-          transform: rotate(360deg);
-        }
-      }
-    </style>
-    <header>
-      <nav
-        class="border-b sticky top-0 dark:bg-opacity-50 bg-background/10 z-40 backdrop-blur-xl"
-      >
-        <ul
-          class="flex py-2 sm:py-0 list-none items-center gap-6 max-w-7xl mx-auto text-neutral-700 dark:text-neutral-400 text-[0.93rem] px-5 xl:px-0 z-9"
-        >
-          <li class="text-base mr-3">
-            <a class="flex items-center gap-1" aria-label="Home" href="/"
-              ><svg xmlns="http://www.w3.org/2000/svg" width="16" height="25">
-                <path
-                  class="fill-primary"
-                  d="M119.5 4.5a1723.113 1723.113 0 011 83 1358.096 1358.096 0 00-43 24c.124.607.457.94 1 1 .321 1.548 1.321 2.215 3 2l2 1c.321 1.548 1.321 2.215 3 2l2 1c.321 1.548 1.321 2.215 3 2l2 1c.321 1.548 1.321 2.215 3 2l2 1c.321 1.548 1.321 2.215 3 2l2 1c.321 1.548 1.321 2.215 3 2l4 2c.321 1.548 1.321 2.215 3 2l2 1c.321 1.548 1.321 2.215 3 2l2 1a272.567 272.567 0 012 32c-.001 10.356-.668 20.356-2 30a323.998 323.998 0 01-21-12c.646-12.38-.02-24.38-2-36-.992.172-1.658-.162-2-1-.473-1.406-1.473-2.073-3-2a268.186 268.186 0 01-33-19c-.283-.789-.783-1.456-1.5-2a154.34 154.34 0 01.5-30 589.735 589.735 0 0140-23c1.324-11.507 1.324-23.173 0-35-.607.124-.94.457-1 1a7697.971 7697.971 0 00-69.5 41l-1 65a29.048 29.048 0 01-4.5-3c-.473-1.406-1.473-2.073-3-2a162.85 162.85 0 01-15-8 683.231 683.231 0 01-.5-64 19.214 19.214 0 016.5-3c1.527.073 2.527-.594 3-2 1.014-1.174 2.347-1.84 4-2 1.527.073 2.527-.594 3-2a338.777 338.777 0 0127-15c1.527.073 2.527-.594 3-2 1.014-1.174 2.347-1.84 4-2 1.527.073 2.527-.594 3-2 1.014-1.174 2.347-1.84 4-2 1.527.073 2.527-.594 3-2 1.014-1.174 2.347-1.84 4-2 1.527.073 2.527-.594 3-2 1.014-1.174 2.347-1.84 4-2 1.527.073 2.527-.594 3-2 1.014-1.174 2.347-1.84 4-2 1.527.073 2.527-.594 3-2 1.014-1.174 2.347-1.84 4-2 1.527.073 2.527-.594 3-2a338.672 338.672 0 0127-15z"
-                  transform="scale(.12214 .12077)"
-                ></path>
-                <path
-                  fill="#2C2C2C"
-                  fill-opacity="0.173"
-                  d="M119.5 4.5c.06-.543.393-.876 1-1a885.367 885.367 0 010 84c.331-27.838-.002-55.505-1-83z"
-                  transform="scale(.12214 .12077)"
-                ></path>
-                <path
-                  fill="#747474"
-                  fill-opacity="0.776"
-                  d="M92.5 19.5c-.473 1.406-1.473 2.073-3 2 .473-1.406 1.473-2.073 3-2zM85.5 23.5c-.473 1.406-1.473 2.073-3 2 .473-1.406 1.473-2.073 3-2z"
-                  transform="scale(.12214 .12077)"
-                ></path>
-                <path
-                  fill="#7B7B7B"
-                  fill-opacity="0.808"
-                  d="M78.5 27.5c-.473 1.406-1.473 2.073-3 2 .473-1.406 1.473-2.073 3-2zM71.5 31.5c-.473 1.406-1.473 2.073-3 2 .473-1.406 1.473-2.073 3-2z"
-                  transform="scale(.12214 .12077)"
-                ></path>
-                <path
-                  fill="#7C7C7C"
-                  fill-opacity="0.808"
-                  d="M64.5 35.5c-.473 1.406-1.473 2.073-3 2 .473-1.406 1.473-2.073 3-2z"
-                  transform="scale(.12214 .12077)"
-                ></path>
-                <path
-                  fill="#828282"
-                  fill-opacity="0.831"
-                  d="M57.5 39.5c-.473 1.406-1.473 2.073-3 2 .473-1.406 1.473-2.073 3-2z"
-                  transform="scale(.12214 .12077)"
-                ></path>
-                <path
-                  fill="#818181"
-                  fill-opacity="0.506"
-                  d="M97.5 40.5c.06-.543.393-.876 1-1 1.324 11.827 1.324 23.493 0 35 .328-11.512-.005-22.846-1-34z"
-                  transform="scale(.12214 .12077)"
-                ></path>
-                <path
-                  fill="#828282"
-                  fill-opacity="0.831"
-                  d="M50.5 43.5c-.473 1.406-1.473 2.073-3 2 .473-1.406 1.473-2.073 3-2z"
-                  transform="scale(.12214 .12077)"
-                ></path>
-                <path
-                  fill="#747474"
-                  fill-opacity="0.776"
-                  d="M20.5 60.5c-.473 1.406-1.473 2.073-3 2 .473-1.406 1.473-2.073 3-2zM13.5 64.5c-.473 1.406-1.473 2.073-3 2 .473-1.406 1.473-2.073 3-2z"
-                  transform="scale(.12214 .12077)"
-                ></path>
-                <path
-                  fill="#A6A6A6"
-                  fill-opacity="0.675"
-                  d="M58.5 97.5a154.34 154.34 0 00-.5 30c.717.544 1.217 1.211 1.5 2-.996.086-1.83-.248-2.5-1l-.5-15.5c.005-5.546.672-10.712 2-15.5z"
-                  transform="scale(.12214 .12077)"
-                ></path>
-                <path
-                  fill="#737373"
-                  fill-opacity="0.933"
-                  d="M78.5 112.5c1.21.432 2.21 1.099 3 2-1.679.215-2.679-.452-3-2z"
-                  transform="scale(.12214 .12077)"
-                ></path>
-                <path
-                  fill="#767676"
-                  fill-opacity="0.953"
-                  d="M83.5 115.5c1.21.432 2.21 1.099 3 2-1.679.215-2.679-.452-3-2z"
-                  transform="scale(.12214 .12077)"
-                ></path>
-                <path
-                  fill="#797979"
-                  fill-opacity="0.953"
-                  d="M88.5 118.5c1.21.432 2.21 1.099 3 2-1.679.215-2.679-.452-3-2z"
-                  transform="scale(.12214 .12077)"
-                ></path>
-                <path
-                  fill="#7C7C7C"
-                  fill-opacity="0.965"
-                  d="M93.5 121.5c1.21.432 2.21 1.099 3 2-1.679.215-2.679-.452-3-2z"
-                  transform="scale(.12214 .12077)"
-                ></path>
-                <path
-                  fill="#7E7E7E"
-                  fill-opacity="0.973"
-                  d="M98.5 124.5c1.21.432 2.21 1.099 3 2-1.679.215-2.679-.452-3-2z"
-                  transform="scale(.12214 .12077)"
-                ></path>
-                <path
-                  fill="#818181"
-                  fill-opacity="0.973"
-                  d="M103.5 127.5c1.21.432 2.21 1.099 3 2-1.679.215-2.679-.452-3-2z"
-                  transform="scale(.12214 .12077)"
-                ></path>
-                <path
-                  fill="#6B6B6B"
-                  fill-opacity="0.902"
-                  d="M110.5 131.5c1.21.432 2.21 1.099 3 2-1.679.215-2.679-.452-3-2z"
-                  transform="scale(.12214 .12077)"
-                ></path>
-                <path
-                  fill="#6E6E6E"
-                  fill-opacity="0.922"
-                  d="M115.5 134.5c1.21.432 2.21 1.099 3 2-1.679.215-2.679-.452-3-2z"
-                  transform="scale(.12214 .12077)"
-                ></path>
-                <path
-                  fill="#5A5A5A"
-                  fill-opacity="0.353"
-                  d="M120.5 137.5c.65.304 1.317.637 2 1a662.226 662.226 0 01.5 63c-.995-.566-1.828-1.233-2.5-2 1.332-9.644 1.999-19.644 2-30a272.567 272.567 0 00-2-32z"
-                  transform="scale(.12214 .12077)"
-                ></path>
-                <path
-                  fill="#6E6E6E"
-                  fill-opacity="0.506"
-                  d="M19.5 141.5c1.527-.073 2.527.594 3 2-1.527.073-2.527-.594-3-2z"
-                  transform="scale(.12214 .12077)"
-                ></path>
-                <path
-                  fill="#6D6D6D"
-                  fill-opacity="0.506"
-                  d="M92.5 148.5c1.527-.073 2.527.594 3 2-1.527.073-2.527-.594-3-2z"
-                  transform="scale(.12214 .12077)"
-                ></path>
-                <path
-                  fill="gray"
-                  fill-opacity="0.506"
-                  d="M97.5 151.5c1.98 11.62 2.646 23.62 2 36a8931.98 8931.98 0 01-2-36z"
-                  transform="scale(.12214 .12077)"
-                ></path></svg
-              ><span
-                class="text-foreground/80 font-semibold hidden md:block ml-1"
-                >Rolve</span
-              ></a
-            >
-          </li>
-          <nav
-            class="relative z-0 hidden flex-shrink-0 items-center py-2 sm:flex"
-          >
-            <a href="/scripts"
-              ><button
-                class="relative z-20 flex h-8 cursor-pointer select-none items-center rounded-sm bg-transparent px-4 py-5 text-sm text-muted-foreground transition-colors"
-              >
-                Scripts
-              </button></a
-            ><a href="/trending"
-              ><button
-                class="relative z-20 flex h-8 cursor-pointer select-none items-center rounded-sm bg-transparent px-4 py-5 text-sm text-muted-foreground transition-colors"
-              >
-                Trending
-              </button></a
-            ><a href="/liked"
-              ><button
-                class="relative z-20 flex h-8 cursor-pointer select-none items-center rounded-sm bg-transparent px-4 py-5 text-sm text-muted-foreground transition-colors"
-              >
-                Liked
-              </button></a
-            ><a href="/executors"
-              ><button
-                class="relative z-20 flex h-8 cursor-pointer select-none items-center rounded-sm bg-transparent px-4 py-5 text-sm text-muted-foreground transition-colors"
-              >
-                Executors
-              </button></a
-            ><a href="/dashboard/scripts?upload=true"
-              ><button
-                class="relative z-20 flex h-8 cursor-pointer select-none items-center rounded-sm bg-transparent px-4 py-5 text-sm text-muted-foreground transition-colors"
-              >
-                Upload
-              </button></a
-            ><a href="https://api.Rolve.net"
-              ><button
-                class="relative z-20 flex h-8 cursor-pointer select-none items-center rounded-sm bg-transparent px-4 py-5 text-sm text-muted-foreground transition-colors"
-              >
-                API
-              </button></a
-            >
-            <div
-              class="absolute left-0 top-0 z-10 rounded-sm bg-secondary transition-[width] dark:bg-primary/10"
-              style="opacity: 0"
-            ></div>
-            <div
-              class="absolute bottom-0 left-0 z-10 h-0.5 bg-primary"
-              style="opacity: 0"
-            ></div>
-          </nav>
-          <li class="ml-auto flex items-center gap-2">
-            <button
-              class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border-input hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2 mr-0 md:mr-3 border-0 xl:border bg-transparent sm:bg-background"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                class="lucide lucide-search mr-0 xl:mr-2"
-              >
-                <circle cx="11" cy="11" r="8"></circle>
-                <path d="m21 21-4.3-4.3"></path></svg
-              ><span class="hidden xl:block">Search scripts... </span
-              ><kbd
-                class="hidden xl:inline-flex pointer-events-none h-5 select-none items-center gap-1 rounded bg-neutral-200 dark:bg-neutral-800 border border-neutral-300 dark:border-neutral-900 px-1.5 font-mono text-[10px] font-medium text-muted-foreground opacity-100 ml-10"
-                ><span class="text-xs">⌘</span>K</kbd
-              ><span class="sr-only">Search scripts</span></button
-            ><a
-              class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2"
-              href="/login"
-              ><svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="17"
-                height="17"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                class="lucide lucide-log-in mr-2"
-              >
-                <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"></path>
-                <polyline points="10 17 15 12 10 7"></polyline>
-                <line x1="15" x2="3" y1="12" y2="12"></line>
-              </svg>
-              Login</a
-            ><button
-              class="items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground h-10 w-10 flex lg:hidden"
-              type="button"
-              aria-haspopup="dialog"
-              aria-expanded="false"
-              aria-controls="radix-:Rfeja:"
-              data-state="closed"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                class="lucide lucide-menu"
-              >
-                <line x1="4" x2="20" y1="12" y2="12"></line>
-                <line x1="4" x2="20" y1="6" y2="6"></line>
-                <line x1="4" x2="20" y1="18" y2="18"></line></svg
-              ><span class="sr-only">Open navigation</span>
-            </button>
-            <div class="hidden lg:flex">
-            
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rolve - Minecraft Client</title>
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+    <!-- Custom Title Bar -->
+    <div class="titlebar">
+        <div class="titlebar-drag-region">
+            <div class="titlebar-icon">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                    <path d="M8 0L0 8l8 8 8-8L8 0zM8 2.5L13.5 8 8 13.5 2.5 8 8 2.5z"/>
+                </svg>
             </div>
-          </li>
-        </ul>
-      </nav>
-    </header>
-    <main class="bg-background">
-      <section
-        class="w-full py-12 md:py-16 relative dark:bg-grid-small-white/[0.2] bg-grid-small-black/[0.2] overflow-hidden"
-      >
-        <svg
-          class="animate-spotlight pointer-events-none absolute h-[169%] w-[138%] lg:w-[84%] opacity-0 -top-40 left-0 md:left-[30%] md:-top-20 z-20"
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 3787 2842"
-          fill="none"
-        >
-          <g filter="url(#filter)">
-            <ellipse
-              cx="1924.71"
-              cy="273.501"
-              rx="1924.71"
-              ry="273.501"
-              transform="matrix(-0.822377 -0.568943 -0.568943 0.822377 3631.88 2291.09)"
-              fill="white"
-              fill-opacity="0.21"
-            ></ellipse>
-          </g>
-          <defs>
-            <filter
-              id="filter"
-              x="0.860352"
-              y="0.838989"
-              width="3785.16"
-              height="2840.26"
-              filterUnits="userSpaceOnUse"
-              color-interpolation-filters="sRGB"
-            >
-              <feFlood flood-opacity="0" result="BackgroundImageFix"></feFlood>
-              <feBlend
-                mode="normal"
-                in="SourceGraphic"
-                in2="BackgroundImageFix"
-                result="shape"
-              ></feBlend>
-              <feGaussianBlur
-                stdDeviation="151"
-                result="effect1_foregroundBlur_1065_8"
-              ></feGaussianBlur>
-            </filter>
-          </defs>
-        </svg>
-        <div
-          class="absolute z-0 pointer-events-none inset-0 flex items-center justify-center bg-background [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"
-        ></div>
-        <div
-          class="siderailwrapper max-w-7xl fixed top-[128px] left-0 right-0 mx-auto hidden 2xl:block"
-        >
-          <div
-            class="bg-card/40 flex justify-center items-center rounded border ads absolute -left-[220px] top-[109px] w-[160px] min-h-[600px]"
-          >
-            <div data-fuse="23118694313"></div>
-            <span class="text-foreground/20 font-bold absolute"
-              >Advertisement</span
-            >
-          </div>
-          <div
-            class="bg-card/40 flex justify-center items-center rounded border ads absolute -right-[220px] top-[109px] w-[160px] min-h-[600px]"
-          >
-            <div data-fuse="23118694652"></div>
-            <span class="text-foreground/20 font-bold absolute"
-              >Advertisement</span
-            >
-          </div>
+            <div class="titlebar-title">Rolve - Minecraft Client</div>
         </div>
-        <div
-          class="container items-center justify-center gap-4 px-4 text-center md:px-3 lg:px-0 lg:gap-10 z-10 max-w-7xl"
-        >
-        
-          <div class="space-y-3 z-40 relative mb-5">
-            <h2
-              class="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl"
-            >
-              NodeJs Client
-            </h2>
-            <p
-              class="mx-auto max-w-[700px] text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-gray-400"
-            >
-              Discover the latest trending scripts.
-            </p>
-          </div>
-          <div
-            class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 w-full items-center justify-center gap-6 lg:gap-12 text-left"
-          ></div>
+        <div class="titlebar-controls">
+            <button class="titlebar-button minimize" id="minimize-btn">
+                <svg width="12" height="12" viewBox="0 0 12 12">
+                    <rect x="2" y="5" width="8" height="2" fill="currentColor"/>
+                </svg>
+            </button>
+            <button class="titlebar-button maximize" id="maximize-btn">
+                <svg width="12" height="12" viewBox="0 0 12 12">
+                    <rect x="2" y="2" width="8" height="8" stroke="currentColor" stroke-width="1.5" fill="none"/>
+                </svg>
+            </button>
+            <button class="titlebar-button close" id="close-btn">
+                <svg width="12" height="12" viewBox="0 0 12 12">
+                    <path d="M2 2L10 10M10 2L2 10" stroke="currentColor" stroke-width="1.5"/>
+                </svg>
+            </button>
         </div>
-      </section>
-    </main>
-    
-   
-  </body>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <h2>Rolve</h2>
+                <p class="version">v1.0.2</p>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <button class="nav-item active" data-tab="home">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
+                    </svg>
+                    Home
+                </button>
+                <button class="nav-item" data-tab="launcher">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                    </svg>
+                    Launcher
+                </button>
+                <button class="nav-item" data-tab="settings">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 15.5A3.5 3.5 0 0 1 8.5 12A3.5 3.5 0 0 1 12 8.5a3.5 3.5 0 0 1 3.5 3.5 3.5 3.5 0 0 1-3.5 3.5m7.43-2.53c.04-.32.07-.64.07-.97 0-.33-.03-.66-.07-1l2.11-1.63c.19-.15.24-.42.12-.64l-2-3.46c-.12-.22-.39-.31-.61-.22l-2.49 1c-.52-.39-1.06-.73-1.69-.98l-.37-2.65A.506.506 0 0 0 14 2h-4c-.25 0-.46.18-.5.42l-.37 2.65c-.63.25-1.17.59-1.69.98l-2.49-1c-.22-.09-.49 0-.61.22l-2 3.46c-.13.22-.07.49.12.64L4.57 11c-.04.34-.07.67-.07 1 0 .33.03.65.07.97l-2.11 1.66c-.19.15-.25.42-.12.64l2 3.46c.12.22.39.3.61.22l2.49-1.01c.52.4 1.06.74 1.69.99l.37 2.65c.04.24.25.42.5.42h4c.25 0 .46-.18.5-.42l.37-2.65c.63-.26 1.17-.59 1.69-.99l2.49 1.01c.22.08.49 0 .61-.22l2-3.46c.12-.22.07-.49-.12-.64l-2.11-1.66Z"/>
+                    </svg>
+                    Settings
+                </button>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="user-info" id="user-info">
+                    <div class="user-avatar">?</div>
+                    <div class="user-details">
+                        <div class="username">Not logged in</div>
+                        <div class="user-status">Offline</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Content Area -->
+        <div class="content">
+            <!-- Home Tab -->
+            <div class="tab-content active" id="home-tab">
+                <div class="welcome-section">
+                    <h1>Welcome to Rolve</h1>
+                    <p>Your premium Minecraft client experience</p>
+                    
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-icon">🎮</div>
+                            <div class="stat-info">
+                                <div class="stat-value">Ready</div>
+                                <div class="stat-label">Client Status</div>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">⚡</div>
+                            <div class="stat-info">
+                                <div class="stat-value">83%</div>
+                                <div class="stat-label">Performance</div>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">🔧</div>
+                            <div class="stat-info">
+                                <div class="stat-value" id="deps-status">Checking...</div>
+                                <div class="stat-label">Dependencies</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="quick-actions">
+                        <button class="action-btn primary" id="quick-launch">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M8 5v14l11-7z"/>
+                            </svg>
+                            Quick Launch
+                        </button>
+                        <button class="action-btn secondary" id="auth-btn">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                            </svg>
+                            Login with Microsoft
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Launcher Tab -->
+            <div class="tab-content" id="launcher-tab">
+                <div class="launcher-section">
+                    <h2>Launch Minecraft</h2>
+                    
+                    <div class="launch-form">
+                        <div class="form-group">
+                            <label for="version-select">Minecraft Version</label>
+                            <select id="version-select">
+                                <option value="1.20.1">1.20.1 (Latest)</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="memory-select">Memory Allocation</label>
+                            <select id="memory-select">
+                                <option value="2G">2GB</option>
+                                <option value="4G" selected>4GB</option>
+                                <option value="6G">6GB</option>
+                                <option value="8G">8GB</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="game-dir">Game Directory</label>
+                            <input type="text" id="game-dir" placeholder="Default directory will be used">
+                        </div>
+                        
+                        <button class="launch-btn" id="launch-btn" disabled>
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M8 5v14l11-7z"/>
+                            </svg>
+                            Launch Minecraft
+                        </button>
+                    </div>
+                    
+                    <div class="launch-status" id="launch-status"></div>
+                </div>
+            </div>
+
+            <!-- Settings Tab -->
+            <div class="tab-content" id="settings-tab">
+                <div class="settings-section">
+                    <h2>Settings</h2>
+                    
+                    <div class="settings-group">
+                        <h3>Client Settings</h3>
+                        <div class="setting-item">
+                            <label>
+                                <input type="checkbox" id="discord-rpc" checked>
+                                Enable Discord Rich Presence
+                            </label>
+                        </div>
+                        <div class="setting-item">
+                            <label>
+                                <input type="checkbox" id="auto-update" checked>
+                                Auto-update client
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="settings-group">
+                        <h3>Performance</h3>
+                        <div class="setting-item">
+                            <label for="default-memory">Default Memory Allocation</label>
+                            <select id="default-memory">
+                                <option value="2G">2GB</option>
+                                <option value="4G" selected>4GB</option>
+                                <option value="6G">6GB</option>
+                                <option value="8G">8GB</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="settings-group">
+                        <h3>About</h3>
+                        <div class="about-info">
+                            <p><strong>Rolve Minecraft Client</strong></p>
+                            <p>Version: 1.0.2</p>
+                            <p>Built with Electron & minecraft-launcher-core</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/renderer.js"></script>
+</body>
 </html>
